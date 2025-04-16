@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: flask-tracker
+    runtime: python
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          name: redis-db
+          type: redis
+
+databases:
+  - name: redis-db
+    type: redis
